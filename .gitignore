@@ -1,0 +1,37 @@
+# Files to exclude from versioning
+
+# Subversion
+.svn/
+
+# Maven
+target/
+pom.xml.releaseBackup
+release.properties
+
+# Eclipse
+.classpath
+.project
+.settings/
+.metadata/
+amp-rest/.externalToolBuilders/
+.cache
+
+# IntelliJ
+*.iml
+.idea/
+
+# Generated
+/amp-rest/src/main/webapp/revision.html
+/amp-rest/src/main/webapp/apidocs/
+/buildanddeploy
+bin/
+.worksheet/
+
+# OS X
+.DS_Store
+
+# jenv
+.java-version
+
+#EmbeddedTomcat
+amp-rest/tomcat.8080/
