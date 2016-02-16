@@ -14,7 +14,7 @@ import javax.ws.rs.core.MediaType;
 
 @Named
 @Path("/")
-public class ProductRest {
+public class ProductResource {
 
     private static List<Product> products = new ArrayList<Product>();
 

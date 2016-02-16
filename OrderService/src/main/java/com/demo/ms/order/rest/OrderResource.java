@@ -16,7 +16,7 @@ import java.util.Date;
 
 @Named
 @Path("/")
-public class OrderRest {
+public class OrderResource {
 
     private static long id = 1;
 

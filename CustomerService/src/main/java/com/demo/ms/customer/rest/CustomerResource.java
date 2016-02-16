@@ -13,7 +13,7 @@ import java.util.List;
 
 @Named
 @Path("/")
-public class CustomerRest {
+public class CustomerResource {
     private static List<Customer> clients = new ArrayList<Customer>();
 
     static {
