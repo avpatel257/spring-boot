@@ -1,10 +1,18 @@
 package com.demo.ms.customer.rest;
 
 import com.demo.ms.customer.domain.Customer;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.inject.Named;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
@@ -12,7 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Named
-@Path("/")
+@Path("/customer")
 public class CustomerResource {
     private static List<Customer> clients = new ArrayList<Customer>();
 
@@ -52,15 +60,27 @@ public class CustomerResource {
     }
 
     @GET
+    @Path("/all")
     @Produces(MediaType.APPLICATION_JSON)
+    @ApiOperation(value = "GetAllCustomers", nickname = "GetAllCustomers")
     public List<Customer> getClientes() {
         return clients;
     }
 
     @GET
-    @Path("customer")
+    @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Customer getCliente(@QueryParam("id") long id) {
+    @ApiOperation(value = "GetCustomerById", nickname = "GetCustomerById")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "id", value = "Customer's Id", required = true, dataType = "int", paramType = "path")
+    })
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Success", response = Customer.class),
+            @ApiResponse(code = 401, message = "Unauthorized"),
+            @ApiResponse(code = 403, message = "Forbidden"),
+            @ApiResponse(code = 404, message = "Not Found"),
+            @ApiResponse(code = 500, message = "Failure")})
+    public Customer getCliente(@PathParam("id") long id) {
         Customer cli = null;
         for (Customer c : clients) {
             if (c.getId() == id)
