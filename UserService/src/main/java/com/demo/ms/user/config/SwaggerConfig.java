@@ -1,4 +1,4 @@
-package com.demo.ms.customer.config;
+package com.demo.ms.user.config;
 
 import com.google.common.base.Predicates;
 import org.springframework.context.annotation.Bean;
@@ -10,8 +10,6 @@ import springfox.documentation.service.ApiInfo;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
-
-import static springfox.documentation.builders.PathSelectors.regex;
 
 @Configuration
 @EnableSwagger2
@@ -28,10 +26,10 @@ public class SwaggerConfig {
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("My awesome API")
-                .description("Here is some description")
+                .title("User Service API docs")
+                .description("APIs to interact with UserService")
                 .version("1.0")
-                .contact("Amit Patel")
+                .contact("John Doe")
                 .build();
     }
 }

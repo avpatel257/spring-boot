@@ -1,4 +1,4 @@
-package com.demo.ms.customer.exception;
+package com.demo.ms.user.exception;
 
 public class NotFoundException extends RuntimeException {
 }

@@ -1,17 +1,18 @@
-package com.demo.ms.customer.service;
+package com.demo.ms.user.service;
 
-import com.demo.ms.customer.dao.UserDao;
-import com.demo.ms.customer.domain.User;
-import com.demo.ms.customer.exception.NotFoundException;
+import com.demo.ms.user.dao.UserDao;
+import com.demo.ms.user.domain.User;
+import com.demo.ms.user.exception.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 
 @Service
 public class UserService {
     @Autowired
     private UserDao dao;
 
-    public User findByUserId(final Long userId) {
+    public User findByUserId(final String userId) {
         return dao.findOne(userId);
     }
 
@@ -19,7 +20,7 @@ public class UserService {
         return dao.save(user);
     }
 
-    public User update(final long userId, final User user) {
+    public User update(final String userId, final User user) {
         User currentUser = dao.findOne(userId);
         if (currentUser == null) {
             throw new NotFoundException();
@@ -39,7 +40,9 @@ public class UserService {
         if (user.getUserName() != null) {
             currentUser.setUserName(user.getUserName());
         }
-
+        if(!CollectionUtils.isEmpty(user.getFriends())) {
+            currentUser.setFriends(user.getFriends());
+        }
         return dao.save(currentUser);
     }
 }

@@ -1,4 +1,4 @@
-package com.demo.ms.customer.domain;
+package com.demo.ms.user.domain;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -8,7 +8,7 @@ import java.util.List;
 @Document(collection = "user")
 public class User {
     @Id
-    private long id;
+    private String id;
     private String name;
     private String userName;
     private String gender;
@@ -17,11 +17,11 @@ public class User {
     private String passwordHash;
     private List<String> friends;
 
-    public long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(String id) {
         this.id = id;
     }
 

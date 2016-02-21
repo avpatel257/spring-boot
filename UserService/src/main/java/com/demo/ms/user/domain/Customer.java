@@ -1,4 +1,4 @@
-package com.demo.ms.customer.domain;
+package com.demo.ms.user.domain;
 
 /**
  * Created by apatel on 2/15/16.
