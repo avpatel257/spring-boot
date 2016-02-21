@@ -2,6 +2,7 @@ package com.demo.springboot;
 
 import io.swagger.jaxrs.config.BeanConfig;
 import io.swagger.jaxrs.listing.ApiListingResource;
+import io.swagger.jersey.listing.ApiListingResourceJSON;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.server.wadl.internal.WadlResource;
 import org.springframework.stereotype.Component;
@@ -29,5 +30,6 @@ public class JerseyConfig extends ResourceConfig {
     private void registerEndpoints() {
         register(WadlResource.class);
         register(HelloWorldEndpoint.class);
+        register( ApiListingResourceJSON.class );
     }
 }
